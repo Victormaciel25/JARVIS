@@ -15,7 +15,7 @@ def listen_command():
             comando = audio.recognize_google(voz, language='pt-BR')
             comando = comando.lower()
             if 'jarvis' in comando:
-                comando = comando.replace('jarvis','')
+                comando = comando.replace('jarvis', '')
                 maquina.say(comando)
                 maquina.runAndWait()
 
@@ -27,9 +27,9 @@ def listen_command():
 def execute_command():
     comando = listen_command()
     if 'procure por' in comando or 'pesquise por' in comando:
-        procurar = comando.replace('procure por','')
+        procurar = comando.replace('procure por', '')
         wikipediaapi.set_lang('pt')
-        resultado = wikipediaapi.summary(procurar,2)
+        resultado = wikipediaapi.summary(procurar, 2)
         print(resultado)
         maquina.say(resultado)
         maquina.runAndWait()
@@ -38,5 +38,3 @@ def execute_command():
 
 while True:
     execute_command()
-
-
